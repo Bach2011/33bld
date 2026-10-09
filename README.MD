@@ -3,6 +3,8 @@
 Made by N. T. Bach / Jerry
 9/10/2026
 
+Acess at: [Here](https://bach2011.github.io/33bld)
+
 ---
 ## 1. Inspiration
 Rubik's Cube is well-known puzzle. Yet, only **10%** of people who have ever touched one were able to solve them. Even more so, only the top **0.01%** of solvers, called cubers eventually moved on to other events like: ***2x2, 4x4, and BLD***. As such, resources and especially tools, websites for blindfolded are limited for such cool events.

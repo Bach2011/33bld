@@ -11,16 +11,24 @@ As a Cuber myself, I was interested in learning BLD 3x3 (blindfolding) with the 
 
 During this winter break, I had nothing to do and put my coding skills (and ClaudeAI) to use to create this website.
 ## 2. Prerequisites
-1. Basic Cubing Timer Usage (eg: [CsTimer](https://cstimer.net))
+1. **Basic Cubing Timer Usage (eg: [CsTimer](https://cstimer.net)):**
 A lot of the features here are inspired from popular cubing timers and may seem unintuitive to beginners. I recommend trying out others first to get used to them.
-2. Old Pochmann Knowledge
+2. **Old Pochmann Knowledge:**
 The website it built to train your memorisation and your ability to come up with accurate strings to memorise in BLD. There are online tutorials on [Youtube](https://youtube.com) that would be very helpful.
 ## 3. Features
-1. Timer
-2. Cube Scramble Visualisation
-3. Edge/Corner Memo
+1. **Timer**
+Press space to start and space again to stop the timer. The time is displayed at the end of the solve but will not be saved.
+2. **Cube Scramble Visualisation**
+There is a 2d grid of cube providng the visualisation of the scramble of the cube for accurate scrambling. 
+3. **Edge/Corner Memo as Hints**
+There are memorisation hints provided that was accurately computed with JavaScript for Blindfolded use.
 ## 4. Limitations & Improvements
-1. Solve Time Is Not Saved
+1. **Solve Time Is Not Saved**
 Due to it being a client-side only website, there are no databases available and no data being stored so your solved time are not to be saved.
-2. 
+2. **No Customisation**
+There can not be changes made to the apperance of the website, other BLD methods for practice or adjust the buffer piece to your likings.
 ## 5. Contributions
+Special thanks to:
+
+- Cubing.net: scramble visulasition
+- srScrambler: providing scrambles for the websites 

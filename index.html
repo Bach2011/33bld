@@ -12,25 +12,45 @@
 <body>
     <h1>3x3 BindFold Practice</h1>
     <h2 class="scramble"></h2>
-    <button class="btn btn-primary changeScr">Generate Scramble</button>
-    <twisty-player 
-    id="cube" puzzle="3x3x3" 
-    control-panel="none"
-    background="none" 
-    hint-facelets="none"
-    style="width: 300px; height: 300px;"
-    visualization="2D">
-</twisty-player>
 
-<div class="memo">
-    <p>Edges: <span id="edge-memo"></span></p>
-    <p>Parity: <span id="parity-memo"></span></p>
-    <p>Corners: <span id="corner-memo"> </span></p>  
-</div>
-<button class="btn btn-success" id="memo-btn">Hide Memo</button>
+    <div class="changeScramble">
+        <button class="btn btn-primary changeScr">New Scramble</button>
+    </div>
 
-<div class="input-memo">
-    
+    <div class="timer">
+        <h1 class="time">0.00</h1>
+    </div>
+<br>
+
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col">
+        <h3>Scramble Visualisation</h3>
+        <twisty-player 
+            id="cube" puzzle="3x3x3" 
+            control-panel="none"
+            background="none" 
+            hint-facelets="none"
+            style="width: 300px; height: 300px; text-align:center; margin: 0 auto;"
+            visualization="2D"
+            >
+        </twisty-player>
+        </div>
+
+        <div class="col">
+        <h3>Note Taker</h3>
+        <div class="input-memo">
+            <textarea id="edge-input" placeholder="Enter edge memo"></textarea>
+            <textarea id="corner-input" placeholder="Enter corner memo"></textarea>
+        </div>
+        <button class="btn btn-success" id="memo-btn">Show Hint</button>
+        <div class="memo" style="display: none;">
+            <p>Edges: <span id="edge-memo"></span></p>
+            <p>Parity: <span id="parity-memo"></span></p>
+            <p>Corners: <span id="corner-memo"> </span></p>  
+        </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -2,3 +2,22 @@ h1, h2
 {
     text-align: center;
 }
+.time
+{
+    text-align: center;
+    font-size: 16rem;
+}
+.changeScramble
+{
+    display: block;
+    text-align: center;
+}
+.input-memo
+{
+    textarea
+    {
+        width: 40%;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+}

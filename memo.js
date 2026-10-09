@@ -118,7 +118,7 @@ const CORNERS = buildPieces(CORNER_LETTERS);
 // ---------- 3. Tracing ----------
 // Simulates Old Pochmann exactly: look at the buffer sticker, shoot it to where it belongs,
 // swap pieces, repeat. Cycle breaks and flipped/twisted pieces fall out naturally.
-function trace(state, P, bufferLetter) {
+function trace(state, P, bufferLetter, breakFirst = []) {
   const s = state.slice();
   const bufPiece = P.pieceOf[bufferLetter];
   const homeLetter = (letter) => P.letterAt[s[P.loc[letter]]];  // which sticker sits at this letter's spot
@@ -145,9 +145,15 @@ function trace(state, P, bufferLetter) {
     if (P.pieceOf[inBuffer] !== bufPiece) {
       target = inBuffer;                      // normal shot
     } else {
-      const unsolved = P.pieces.find((pc) => pc !== bufPiece && !pieceSolved(pc));
-      if (!unsolved) break;                   // everything except possibly the buffer is solved
-      target = unsolved.letters[0];           // cycle break
+      // Cycle break: try the preferred letters first (e.g. D), then any unsolved piece
+      const preferred = breakFirst.find((l) => P.pieceOf[l] !== bufPiece && !pieceSolved(P.pieceOf[l]));
+      if (preferred) {
+        target = preferred;
+      } else {
+        const unsolved = P.pieces.find((pc) => pc !== bufPiece && !pieceSolved(pc));
+        if (!unsolved) break;                 // everything except possibly the buffer is solved
+        target = unsolved.letters[0];
+      }
     }
     memo.push(target);
     swap(target);
@@ -160,15 +166,18 @@ const pairs = (letters) => letters.join("").replace(/(..)/g, "$1 ").trim();
 const T_PERM = "R U R' U' R' F R2 U' R' U' R U R' F'";
 
 export function opMemo(scramble) {
+  if (typeof scramble !== "string") {
+    throw new Error("opMemo needs the scramble as a string, but got: " + scramble);
+  }
   const state = applyAlg(solvedState(), scramble);
-  const edges = trace(state, EDGES, "B");
+  const edges = trace(state, EDGES, "B", ["D"]);   // edge cycle breaks go to D (UL) first
   const parity = edges.length % 2 === 1;
 
   // An odd number of T-perms leaves the UFR and UBR corners swapped. With parity, trace the
   // corners as they are AFTER the edges are done (UFR/UBR swapped) — then corners solve
   // normally and no extra parity algorithm is needed. Edges are unaffected for corner tracing.
   const cornerState = parity ? applyAlg(state, T_PERM) : state;
-  const corners = trace(cornerState, CORNERS, "A");
+  const corners = trace(cornerState, CORNERS, "A", ["P"]);   // corner cycle breaks go to P (RDF) first
 
   return {
     edges,

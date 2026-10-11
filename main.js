@@ -66,7 +66,7 @@ function stopTimer() {
 }
 
 document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
+  if (event.code === "Space" && (document.activeElement && document.activeElement.tagName != "TEXTAREA")) {
     event.preventDefault();
     if (!timing) {
       startTimer();

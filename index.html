@@ -40,8 +40,8 @@
         <div class="col">
         <h3>Note Taker</h3>
         <div class="input-memo">
-            <textarea id="edge-input" placeholder="Enter edge memo"></textarea>
-            <textarea id="corner-input" placeholder="Enter corner memo"></textarea>
+            <textarea oninput="this.value = this.value.toUpperCase()" id="edge-input" placeholder="Enter edge memo"></textarea>
+            <textarea oninput="this.value = this.value.toUpperCase()" id="corner-input" placeholder="Enter corner memo"></textarea>
         </div>
         <button class="btn btn-success" id="memo-btn">Show Hint</button>
         <div class="memo" style="display: none;">
